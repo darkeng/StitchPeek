@@ -82,3 +82,9 @@ StitchPeek uses [Inno Setup 6](https://jrsoftware.org/isinfo.php) to bundle the 
 
 - **`build_installer.bat`**
   _(This script calls the ISCC compiler natively and deposits the final Setup `.exe` into the `out\` directory)_.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
