@@ -4,7 +4,7 @@
 
 Powered by the robust [`libembroidery`](https://github.com/Embroidermodder/libembroidery) parsing core, StitchPeek translates raw stitch coordinates directly into a beautifully anti-aliased preview using Windows GDI+, all without needing to open slow external embroidery software!
 
-![StitchPeek Preview](https://github.com/darkeng/StitchPeek/blob/main/assets/preview.png)
+![StitchPeek Preview](https://github.com/darkeng/StitchPeek/blob/master/assets/preview.png)
 
 ## Features
 
