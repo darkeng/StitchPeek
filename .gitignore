@@ -20,7 +20,6 @@ cmake_install.cmake
 
 # Temp & Compiled Objects
 *.lib
-*.exp
 *.exe
 *.dll
 *.obj
