@@ -1,8 +1,8 @@
 [Setup]
 AppName=StitchPeek
 AppVersion=1.0.0
-AppPublisher=Engel
-AppUpdatesURL=https://github.com/engel/StitchPeek
+AppPublisher=darkeng
+AppUpdatesURL=https://github.com/darkeng/StitchPeek
 DefaultDirName={localappdata}\StitchPeek
 DefaultGroupName=StitchPeek
 DisableProgramGroupPage=yes
