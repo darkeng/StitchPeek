@@ -21,7 +21,7 @@ Powered by the robust [`libembroidery`](https://github.com/Embroidermodder/libem
 
 ## 🚀 For End Users: Installing
 
-1. Go to the [Releases](#) page and download `StitchPeek_1.0.0_Installer.exe`.
+1. Go to the [Releases](https://github.com/darkeng/StitchPeek/releases) page and download `StitchPeek_1.0.0_Installer.exe`.
 2. Run it! It installs for your user locally in seconds without needing Administrator rights.
 3. Open a folder full of embroidery files and set the View to "Large Icons".
 4. Enjoy your beautiful thumbnails!
