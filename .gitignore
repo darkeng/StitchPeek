@@ -1,0 +1,36 @@
+# CMake
+build/
+out/
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+*.cmake
+
+# Visual Studio
+*.sln
+*.suo
+*.user
+*.vcxproj
+*.vcxproj.filters
+.vs/
+*.pdb
+*.ilk
+
+# Temp & Compiled Objects
+*.lib
+*.exp
+*.exe
+*.dll
+*.obj
+StitchPeek_old*.dll
+
+# App Data / Caches
+test/*_copy.*
+output.png
+*.log
+
+# Windows internal files
+Thumbs.db
+Desktop.ini
