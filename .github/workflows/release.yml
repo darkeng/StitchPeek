@@ -1,0 +1,57 @@
+name: Release Installer
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Ensure tag is on master
+        shell: pwsh
+        run: |
+          git fetch origin master --depth=1
+          $tagCommit = git rev-list -n 1 $env:GITHUB_REF_NAME
+          $masterCommit = git rev-parse origin/master
+          if ($tagCommit -ne $masterCommit) {
+            Write-Error "Tag $env:GITHUB_REF_NAME must point to origin/master HEAD ($masterCommit), current tag commit is $tagCommit."
+            exit 1
+          }
+
+      - name: Set up MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Set up CMake
+        uses: jwlawson/actions-setup-cmake@v2
+
+      - name: Configure (Release, x64)
+        run: cmake -B build -A x64
+
+      - name: Build (Release)
+        run: cmake --build build --config Release
+
+      - name: Install Inno Setup
+        shell: pwsh
+        run: choco install innosetup --no-progress -y
+
+      - name: Build installer
+        shell: pwsh
+        run: |
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" "installer.iss"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: out/*.exe
+          generate_release_notes: true
