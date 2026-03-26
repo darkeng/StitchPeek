@@ -10,25 +10,11 @@ Powered by the robust [`libembroidery`](https://github.com/Embroidermodder/libem
 
 - **Native Explorer Integration:** Uses official COM `IThumbnailProvider` interfaces.
 - **Support for Major Formats:** `.pes`, `.dst`, `.exp`, `.jef`, `.vp3`, `.xxx`, `.pec`.
-- **Zero Configuration:** Just install and your folders will light up.
-- **Non-Admin Installation:** Safe and clean registry writes to `HKEY_CURRENT_USER` meaning no UAC required!
+- **Open Source Core:** Focused on transparent, hackable C++ implementation.
 
 ## System Requirements
 
 - Windows 10 or Windows 11 (64-bit)
-
----
-
-## 🚀 For End Users: Installing
-
-1. Go to the [Releases](https://github.com/darkeng/StitchPeek/releases) page and download `StitchPeek_1.0.0_Installer.exe`.
-2. Run it! It installs for your user locally in seconds without needing Administrator rights.
-3. Open a folder full of embroidery files and set the View to "Large Icons".
-4. Enjoy your beautiful thumbnails!
-
-_(To uninstall, simply look up "StitchPeek" in the standard Windows Apps & Features menu, or use the "Uninstall StitchPeek" shortcut in your Start Menu)._
-
----
 
 ## 🛠️ For Developers: Working with the Source
 
@@ -76,12 +62,9 @@ StitchPeek intentionally isolates the graphical GDI+ plotting logic from the COM
 - **`test_thumbnail.bat`**
   _(This script iterates through the `test/` directory samples, feeding them to `test_thumbnail.exe` and verifying that the output `.png` images are mathematically correct)._
 
-### 4. Compiling the Final Installer
+### 4. Current Project Scope
 
-StitchPeek uses [Inno Setup 6](https://jrsoftware.org/isinfo.php) to bundle the DLL into a professional `.exe` setup file. Once you are ready for a release:
-
-- **`build_installer.bat`**
-  _(This script calls the ISCC compiler natively and deposits the final Setup `.exe` into the `out\` directory)_.
+The project currently focuses on source-first development and local build/test workflows.
 
 ---
 
