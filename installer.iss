@@ -9,8 +9,11 @@ DisableProgramGroupPage=yes
 UninstallDisplayIcon={app}\StitchPeek.dll
 Compression=lzma2
 SolidCompression=yes
-ArchitecturesInstallIn64BitMode=x64
-ArchitecturesAllowed=x64
+; Use x64os (not x64compatible): our shell extension is a native x64 DLL and
+; will not load into an ARM64 Explorer process, even though ARM64 Windows can
+; emulate x64. x64os = strict x64 hardware, the same semantics as the old x64.
+ArchitecturesInstallIn64BitMode=x64os
+ArchitecturesAllowed=x64os
 OutputBaseFilename=StitchPeek_1.0.0_Installer
 OutputDir=out
 ; Runs smoothly without annoying Administrator (UAC) prompts
@@ -48,16 +51,31 @@ Name: "{group}\Uninstall StitchPeek"; Filename: "{uninstallexe}"
   ============================================================================ }
 
 const
-  Exts: array[0..6] of String = ('.pes', '.dst', '.exp', '.jef', '.vp3', '.xxx', '.pec');
   PropHandlerIID = '{00021500-0000-0000-C000-000000000046}';
   CacheDir = '{localappdata}\Microsoft\Windows\Explorer\';
 
+{ Inno Pascal Script does not support typed array constants, so we build
+  the list at runtime. }
+function EmbroideryExts: TArrayOfString;
+begin
+  SetArrayLength(Result, 7);
+  Result[0] := '.pes';
+  Result[1] := '.dst';
+  Result[2] := '.exp';
+  Result[3] := '.jef';
+  Result[4] := '.vp3';
+  Result[5] := '.xxx';
+  Result[6] := '.pec';
+end;
+
 procedure CleanGhostHandlers;
 var
+  Exts: TArrayOfString;
   I: Integer;
   Ext, FileExtsKey, ClassesKey: String;
 begin
-  for I := 0 to High(Exts) do
+  Exts := EmbroideryExts;
+  for I := 0 to GetArrayLength(Exts) - 1 do
   begin
     Ext := Exts[I];
     ClassesKey := 'Software\Classes\' + Ext;
